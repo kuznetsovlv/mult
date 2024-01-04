@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
+project(mult VERSION 1.0)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_REQUIRED True)
+configure_file(env.h.in env.h)
+add_executable(mult mult.cpp)
+target_include_directories(mult PUBLIC "${PROJECT_BINARY_DIR}")
