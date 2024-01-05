@@ -1,12 +1,6 @@
 #include <iostream>
-#include <cstdio>
-#include <ctime>
-#include <cstdlib>
-#include <cstdint>
-
+#include "random.h"
 #include "env.h"
-
-uint16_t random(uint16_t, uint16_t);
 
 int main(int argc, char **argv)
 {
@@ -19,17 +13,4 @@ int main(int argc, char **argv)
 		getchar();
 	}
 	return 0;
-}
-
-uint16_t random(uint16_t from, uint16_t to)
-{
-	static bool init = false;
-
-	if(!init)
-	{
-		srand(time(nullptr));
-		init = true;
-	}
-
-	return rand() % (to - from) + from;
 }
