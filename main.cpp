@@ -2,7 +2,7 @@
 #include "random.h"
 #include "env.h"
 
-int main(int argc, char **argv)
+int main(int, char **argv)
 {
 
 	std::cout << *argv << " version " << VERSION_MAJOR << "." << VERSION_MINOR << std::endl;
