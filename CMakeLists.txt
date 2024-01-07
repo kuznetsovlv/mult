@@ -21,7 +21,7 @@ configure_file(env.h.in env.h)
 
 add_subdirectory(random)
 
-add_executable(mult mult.cpp)
+add_executable(mult main.cpp)
 
 target_link_libraries(mult PUBLIC random rndlib)
 target_include_directories(random PUBLIC "${PROJECT_BINARY_DIR}")
