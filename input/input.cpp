@@ -15,7 +15,8 @@
 struct termios oldSettings, newSettings;
 #endif
 
-void switchOffBuffer(void) {
+void switchOffBuffer()
+{
 #ifndef _WIN32
   tcgetattr( fileno( stdin ), &oldSettings );
   newSettings = oldSettings;
@@ -24,16 +25,16 @@ void switchOffBuffer(void) {
 #endif
 }
 
-void switchOnBuffer(void) {
+void switchOnBuffer() {
 #ifndef _WIN32
   tcsetattr( fileno( stdin ), TCSANOW, &oldSettings );
 #endif
 }
 
-char getPressedChar(void) {
+char getPressedChar() {
 #ifdef _WIN32
   return _getch();
 #else
-return getchar();
+return static_cast<char>(getchar());
 #endif
 }
