@@ -1,5 +1,5 @@
 #include <iostream>
-#include "random.h"
+#include "input.h"
 #include "env.h"
 
 int main(int, char **argv)
@@ -7,10 +7,23 @@ int main(int, char **argv)
 
 	std::cout << *argv << " version " << VERSION_MAJOR << "." << VERSION_MINOR << std::endl;
 
-	while(true)
-	{
-		std::cout << random(2, 10) << " * " << random(2, 10) << std::endl;
-		getchar();
+	std::cout << "TEST OF KNOWLEDGE OF THE MULTIPLICATION TABLE" << std::endl;
+
+	switchOffBuffer();
+
+	std::cout << "Press Q to quit or any other key to start test:";
+
+	char ch = getPressedChar();
+
+	std::cout << std::endl;
+
+	if (ch != 'q' && ch != 'Q') {
+
+		std::cout << "Starting test..." << std::endl;
+
 	}
+
+	switchOnBuffer();
+
 	return 0;
 }
