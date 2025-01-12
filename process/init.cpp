@@ -11,7 +11,7 @@ void init(std::vector<std::pair<uint16_t, uint16_t>> &arr)
       {
             for(uint16_t b = a; b < 10; ++b)
             {
-                  arr.push_back(std::make_pair(a, b));
+                  arr.emplace_back(a, b);
             }
       }
 

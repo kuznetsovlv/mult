@@ -1,5 +1,5 @@
 #include <iostream>
-#include "input.h"
+#include "input_reader.h"
 #include "process.h"
 #include "env.h"
 
@@ -11,13 +11,13 @@ int main(int, char **argv)
 
 	std::cout << "Press Q to quit or any other key to start test:";
 
-	switchOffBuffer();
-	const char ch = getPressedChar();
-	switchOnBuffer();
+
+	const char ch = input_reader::instance().get_char();
 
 	std::cout << std::endl;
 
-	if (ch != 'q' && ch != 'Q') {
+	if (ch != 'q' && ch != 'Q')
+	{
 
 		std::cout << "Starting test..." << std::endl;
 
