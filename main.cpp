@@ -16,7 +16,8 @@ int main(int, char **argv)
 
 	std::cout << std::endl;
 
-	if (ch != 'q' && ch != 'Q') {
+	if (ch != 'q' && ch != 'Q')
+	{
 
 		std::cout << "Starting test..." << std::endl;
 
