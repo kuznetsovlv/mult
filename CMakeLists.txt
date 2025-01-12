@@ -30,7 +30,7 @@ target_compile_options(processlib INTERFACE
 
 configure_file(env.h.in env.h)
 
-add_subdirectory(input)
+add_subdirectory(input_reader)
 add_subdirectory(process)
 
 add_executable(mult main.cpp)

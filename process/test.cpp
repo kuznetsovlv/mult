@@ -5,6 +5,7 @@
 #include <iostream>
 #include <iomanip>
 #include <ios>
+#include "../input_reader/input_reader.h"
 
 void test(std::vector<std::pair<uint16_t, uint16_t>> &arr)
 {
@@ -14,22 +15,21 @@ void test(std::vector<std::pair<uint16_t, uint16_t>> &arr)
     for(auto &p : arr)
     {
         const uint16_t expected = p.first * p.second;
-        uint16_t answer;
+
 
         std::cout << p.first << " * " << p.second << " = ";
-        std::cin >> answer;
 
-        if(answer == expected)
+        if(input_reader::instance().get_uint16() == expected)
         {
             ++correct;
-            std::cout << "CORRECT" << std::endl;
+            std::cout << " CORRECT" << std::endl;
         }
         else
         {
-          std::cout << "FAIL: " << expected << std::endl;
+          std::cout << " FAIL: " << expected << std::endl;
         }
     }
 
     std::cout << "You gave " << correct << " " << (correct == 1 ? "answer" : "answers") << " from " << total << std::endl;
-    std::cout << "Your result is " << std::fixed << std::setprecision(1) << (100.0 * correct / total) << "%" << std::endl;
+    std::cout << "Your result is " << std::fixed << std::setprecision(1) << (100.0 * static_cast<double>(correct) / static_cast<double>(total)) << "%" << std::endl;
 }
