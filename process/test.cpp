@@ -24,11 +24,11 @@ void test(std::vector<std::pair<uint16_t, uint16_t>> &arr)
             if(input_reader::instance().get_uint16() == expected)
             {
                 ++correct;
-                std::cout << " CORRECT" << std::endl;
+                std::cout << "\033[1;34m CORRECT\033[0m" << std::endl;
             }
             else
             {
-                std::cout << " FAIL: " << expected << std::endl;
+                std::cout << "\033[1;31m FAIL: " << expected << "\033[0m" << std::endl;
             }
             ++total;
         }
@@ -38,11 +38,19 @@ void test(std::vector<std::pair<uint16_t, uint16_t>> &arr)
         std::cout << std::endl;
     }
 
-    const size_t wrong = total - correct;
+    if (total)
+    {
+        const size_t wrong = total - correct;
+        const double percentage = (100.0 * static_cast<double>(correct) / static_cast<double>(total));
 
-    std::cout << "Total tests: " << total << std::endl;
-    std::cout << "You gave " << correct << " correct " << (correct == 1 ? "answer" : "answers") <<
-        " and " << wrong << " " << (wrong == 1 ? "answer" : "answers") << " from " << total << std::endl;
-    std::cout << "Your result is " << std::fixed << std::setprecision(1) <<
-        (100.0 * static_cast<double>(correct) / static_cast<double>(total)) << "%" << std::endl;
+        std::cout << "\033[1;1mTotal tests: " << total << "\033[0m" << std::endl;
+        std::cout << "You gave \033[1;34m" << correct << "\033[0m correct " << (correct == 1 ? "answer" : "answers") <<
+            " and \033[1;31m" << wrong << "\033[0m " << (wrong == 1 ? "answer" : "answers") << " from " << total << std::endl;
+        std::cout << "Your result is " << std::fixed << std::setprecision(1) <<
+           (percentage < 35 ? "\033[1;31m" : percentage > 65 ? "\033[1;34m" : "\033[1;33m") << percentage << "%\033[0m" << std::endl;
+    }
+    else
+    {
+        std::cout << "No tests were performed." << std::endl;
+    }
 }

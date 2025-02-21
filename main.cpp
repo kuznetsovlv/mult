@@ -10,9 +10,9 @@ int main(int, char **argv)
 	{
 		std::cout << *argv << " version " << VERSION_MAJOR << "." << VERSION_MINOR << std::endl;
 
-		std::cout << "TEST OF KNOWLEDGE OF THE MULTIPLICATION TABLE" << std::endl;
+		std::cout << "\033[1;37m\033[1;1mTEST OF KNOWLEDGE OF THE MULTIPLICATION TABLE\033[0m" << std::endl;
 
-		std::cout << "Press Q to quit or any other key to start test:";
+		std::cout << "Press \033[1;31mQ\033[0m to quit or \033[1;36many other key\033[0m to start test:";
 
 
 		const char ch = input_reader::instance().get_char();
