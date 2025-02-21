@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(mult VERSION 2.1)
+project(mult VERSION 2.2)
 
 add_library(inputlib INTERFACE)
 target_compile_features(inputlib INTERFACE cxx_std_20)
@@ -70,3 +70,15 @@ target_include_directories(arguments PUBLIC "${PROJECT_BINARY_DIR}")
 
 target_link_libraries(mult PUBLIC print_help helplib)
 target_include_directories(print_help PUBLIC "${PROJECT_BINARY_DIR}")
+
+install(TARGETS mult RUNTIME DESTINATION bin)
+
+set(CPACK_GENERATOR "DEB;RPM;TGZ;7Z")
+set(CPACK_PACKAGE_NAME "mult")
+set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
+set(CPACK_PACKAGE_CONTACT "kuznetsovlv1981@gmail.com")
+set(CPACK_PACKAGING_INSTALL_PREFIX "/usr/local")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Multiplication table tests.")
+set(CPACK_PACKAGE_VENDOR "Kuznetsov Leonid")
+include(CPack)
