@@ -1,15 +1,18 @@
 #include "input_reader.h"
-#include <string>
 #include <cstdint>
 #include <iostream>
+#include <string>
+#include "stop_exception.h"
 #ifdef _WIN32
 #include <conio.h>
 #else
 #include <cstdio>
+#include <termios.h>
 #include <sys/time.h>
 #include <sys/types.h>
-#include <termios.h>
 #endif
+
+constexpr char EOF_CHAR = 0x4;
 
 input_reader::input_reader()
 {
@@ -44,12 +47,12 @@ char input_reader::get_char() const
   ch = _getch();
 #else
   ch = static_cast<char>(getchar());
-  // std::cin >> ch;
 #endif
 
-  // std::cout << "\b \b";
-
-  // std::cout << std::hex << static_cast<int>(ch);
+  if (ch == EOF_CHAR || ch == EOF)
+  {
+    throw stop_exception();
+  }
 
   return ch;
 }
