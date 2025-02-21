@@ -31,6 +31,16 @@ int main(int, char **argv)
 	{
 		std::cout << std::endl;
 	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+		return 1;
+	}
+	catch (...)
+	{
+		std::cerr << "Unknown error." << std::endl;
+		return 1;
+	}
 
 
 	return 0;
